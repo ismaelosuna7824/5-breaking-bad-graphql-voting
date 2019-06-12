@@ -6,7 +6,7 @@ import { votes } from './resolversMap';
  * @param id Select Character ID value
  */
 function getCharacterVotes(id: number | string) {
-    return lodash.filter(votes, ['character', +id]).length;
+    return lodash.filter(votes, ['character', id]).length;
 }
 
 const type: IResolvers = {
