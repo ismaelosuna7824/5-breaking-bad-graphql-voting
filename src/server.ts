@@ -29,9 +29,9 @@ app.get('/playground', expressPlayground({
 const PORT = process.env.PORT || 5005;
 const httpServer = createServer(app);
 server.installSubscriptionHandlers(httpServer);
-httpServer.listen(
-    { port: PORT },
-    () => {
-        console.log(`GraphQL Server Running at http://localhost:${PORT}/playground`)
-    }
-);
+httpServer.listen({ port: PORT }, () : void => {
+    console.log('========================SERVER==================================');
+    console.log(`🚀 🚀  GraphQL Server running @ http://localhost:${PORT}${server.graphqlPath} 🚀 🚀 `);
+    console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${server.subscriptionsPath}`);
+    console.log('================================================================');
+});
