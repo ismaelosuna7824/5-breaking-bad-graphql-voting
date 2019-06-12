@@ -1,0 +1,12 @@
+type Character {
+    id: ID!
+    name: String!
+    actor: String!
+    total_episodes: Int!
+    photo: String!
+}
+
+type Query {
+    getCharacters: [Character!]!
+    getCharacter(id: ID!): Character!
+}
