@@ -17,6 +17,7 @@ const server = new ApolloServer({
     context: { pubsub },
     introspection: true // Necesario
 });
+server.applyMiddleware({ app });
 
 app.get('/', (_, res) => {
     res.send('Welcome to Breaking Bad vote system in GraphQL');
@@ -27,6 +28,7 @@ app.get('/playground', expressPlayground({
 }));
 const PORT = process.env.PORT || 5005;
 const httpServer = createServer(app);
+server.installSubscriptionHandlers(httpServer);
 httpServer.listen(
     { port: PORT },
     () => {
