@@ -9,4 +9,5 @@ type Character {
 type Query {
     getCharacters: [Character!]!
     getCharacter(id: ID!): Character!
+    
 }
