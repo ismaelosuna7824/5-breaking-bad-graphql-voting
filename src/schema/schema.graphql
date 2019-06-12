@@ -16,5 +16,12 @@ type Vote {
 type Query {
     getCharacters: [Character!]!
     getCharacter(id: ID!): Character!
+}
 
+type Mutation {
+    addVote(character: ID!): [Vote!]!
+}
+
+type Subscription {
+    newVote: Vote!
 }
