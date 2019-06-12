@@ -4,7 +4,10 @@
   "description": "Node server in GraphQL that will allow us to make a voting system in real time with graphics about who is our favorite Breaking Bad character ",
   "main": "build/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node build/server.js",
+    "build": "tsc -p . && ncp src/schema build/schema",
+    "start:dev": "npm run build:deve",
+    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src-server.ts -e ts,graphql,json"
   },
   "repository": {
     "type": "git",
