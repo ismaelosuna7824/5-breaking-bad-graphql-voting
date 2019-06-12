@@ -19,9 +19,18 @@ type Query {
 }
 
 type Mutation {
+    """ 
+    Send vote to select character
+    """
     addVote(character: ID!): [Vote!]!
 }
 
+"""
+Subscriptions to take realtime votes data
+"""
 type Subscription {
-    newVote: Vote!
+    """
+    Take new votes
+    """
+    newVote: [Character!]!
 }

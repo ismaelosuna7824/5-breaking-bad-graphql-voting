@@ -9,9 +9,14 @@ function getCharacterVotes(id: number | string) {
     return lodash.filter(votes, ['character', id]).length;
 }
 
+function getPhoto(photo: string) {
+    return (photo !== undefined) ? 'https://vignette.wikia.nocookie.net/breakingbad/images'.concat(photo) : undefined;
+}
+
 const type: IResolvers = {
     Character: {
-        votes: parent => getCharacterVotes(parent.id)
+        votes: parent => getCharacterVotes(parent.id),
+        photo: parent => getPhoto(parent.photo)
     }
 }
 
