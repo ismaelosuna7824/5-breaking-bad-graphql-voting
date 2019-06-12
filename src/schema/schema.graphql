@@ -3,7 +3,7 @@ type Character {
     name: String!
     actor: String!
     total_episodes: Int!
-    photo: String!
+    photo: String
 }
 
 type Query {
