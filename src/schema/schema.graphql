@@ -4,10 +4,17 @@ type Character {
     actor: String!
     total_episodes: Int!
     photo: String
+    votes: Int!
+}
+
+type Vote {
+    id: ID!
+    character: ID!
+    createdAt: String!
 }
 
 type Query {
     getCharacters: [Character!]!
     getCharacter(id: ID!): Character!
-    
+
 }
