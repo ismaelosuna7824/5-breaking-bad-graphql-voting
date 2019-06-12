@@ -5,7 +5,8 @@ const characters = [
         id: 1,
         name: 'Walter White',
         actor: 'Bryan Cranston',
-        total_episodes: 62
+        total_episodes: 62,
+        votes: 100
     },
     {
         id: 2,
