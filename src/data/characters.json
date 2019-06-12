@@ -1,0 +1,68 @@
+[
+    {
+        "id":"1",
+        "name":"Walter White",
+        "actor":"Bryan Cranston",
+        "total_episodes": 62
+    },
+    {
+        "id":"2",
+        "name":"Jesse Pinkman",
+       "actor":"Aaron Paul",
+       "total_episodes": 62
+    },
+    {
+        "id":"3",
+        "name":"Skyler White",
+       "actor":"Anna Gunn",
+       "total_episodes": 61
+    },
+    {
+        "id":"4",
+        "name":"Hank Schrader",
+       "actor":"Dean Norris",
+       "total_episodes": 51
+    },
+    {
+        "id":"5",
+        "name":"Marie Schrader",
+       "actor":"Betsy Brandt",
+       "total_episodes": 50
+    },
+    {
+        "id":"6",
+        "name":"Walter White Jr.",
+       "actor":"RJ Mitte",
+       "total_episodes": 53
+    },
+    {
+        "id":"7",
+        "name":"Gustavo Fring",
+       "actor":"Giancarlo Esposito",
+       "total_episodes": 24
+    },
+    {
+        "id":"8",
+        "name":"Saul Goodman",
+       "actor":"Bob Odenkirk",
+       "total_episodes": 36
+    },
+    {
+        "id":"9",
+        "name":"Mike Ehrmantraut",
+       "actor":"Jonathan Banks",
+       "total_episodes": 25
+    },
+    {
+        "id":"10",
+        "name":"Lydia Rodarte-Quayle",
+       "actor":"Laura Fraser",
+       "total_episodes": 9
+    },
+    {
+        "id":"11",
+        "name":"Todd Alquist",
+       "actor":"Jesse Plemons",
+       "total_episodes": 11
+    }
+]
