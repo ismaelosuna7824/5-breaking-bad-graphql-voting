@@ -14,8 +14,8 @@ type Vote {
 }
 
 type Query {
-    getCharacters: [Character!]!
-    getCharacter(id: ID!): Character!
+    characters: [Character!]!
+    character(id: ID!): Character!
 }
 
 type Mutation {
