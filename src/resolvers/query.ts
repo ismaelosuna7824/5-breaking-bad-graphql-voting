@@ -21,8 +21,8 @@ const query : IResolvers = {
             return characters;
         },
         getCharacter(_: void, { id }): any {
-            console.log(id);
-            return lodash.filter(characters, ['id', +id])[0];
+            const character = lodash.filter(characters, ['id', +id])[0];
+            return (character !== undefined )? character: {id, name: `Not found ${id} contain character`, actor: '', total_episodes: -1};
         }
     }
 }
