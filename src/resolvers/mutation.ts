@@ -5,7 +5,7 @@ const mutation : IResolvers = {
     Mutation: {
         async addVote(_:void, { character}, {db, pubsub}) {
             const vote = {
-                id: String(await db.collection('votes').count() + 1),
+                id: String(await db.collection('votes').countDocuments() + 1),
                 character,
                 createdAt: (new Datetime().getCurrentDateTime())
             };
