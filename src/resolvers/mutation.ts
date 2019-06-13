@@ -1,7 +1,6 @@
 import { Datetime } from './../libs/datetime';
 import { IResolvers } from 'graphql-tools';
-import { votes, NEW_VOTE } from './resolversMap';
-import {database} from './../data/data.store';
+import { NEW_VOTE } from './resolversMap';
 const mutation : IResolvers = {
     Mutation: {
         async addVote(_:void, { character}, {db, pubsub}) {
@@ -22,7 +21,7 @@ const mutation : IResolvers = {
             });
             // votes.push(vote);
             /**
-             * Send all characters data
+             * Send all characters data and notify!
              */
             pubsub.publish(NEW_VOTE, { newVote: db.collection('characters').find().toArray() });
             return db.collection('votes').find().toArray();
