@@ -1,0 +1,10 @@
+_id,id,name,actor,total_episodes,photo
+ObjectId("5d023c263f81cb050705ff06"),1,Walter White,Bryan Cranston,62,/e/e7/BB-S5B-Walt-590.jpg
+ObjectId("5d023c263f81cb050705ff07"),2,Jesse Pinkman,Aaron Paul,62,/0/0c/JesseS5B.jpg
+ObjectId("5d023c263f81cb050705ff08"),3,Skyler White,Anna Gunn,61,/d/d3/Skylar_S5b.jpg
+ObjectId("5d023c263f81cb050705ff09"),4,Hank Schrader,Dean Norris,51,/7/7b/Hank_S5b.jpg
+ObjectId("5d023c263f81cb050705ff0a"),5,Marie Schrader,Betsy Brandt,50,/b/b7/Marie_S5b.jpg
+ObjectId("5d023c263f81cb050705ff0b"),6,Walter White Jr.,RJ Mitte,53,/4/41/WaltJr_S5b.jpg
+ObjectId("5d023c263f81cb050705ff0c"),7,Gustavo Fring,Giancarlo Esposito,24,/b/be/Season_4_-_Gus.jpg
+ObjectId("5d023c263f81cb050705ff0d"),8,Saul Goodman,Bob Odenkirk,36,/a/a4/Saul_S5b.jpg
+ObjectId("5d023c263f81cb050705ff0e"),9,Mike Ehrmantraut,Jonathan Banks,25,/8/8b/MikeS5.jpg
