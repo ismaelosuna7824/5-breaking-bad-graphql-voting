@@ -5,7 +5,7 @@ import { IResolvers } from 'graphql-tools';
  */
 async function getCharacterVotes(db: any, id: number | string) {
     // TODO return select character votes total
-    return db.collection('votes').estimatedDocumentCount();
+    return db.collection('votes').find({ character: id }).count();
 }
 
 function getPhoto(photo: string) {

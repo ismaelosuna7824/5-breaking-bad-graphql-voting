@@ -4,9 +4,9 @@ import { votes, NEW_VOTE } from './resolversMap';
 import {database} from './../data/data.store';
 const mutation : IResolvers = {
     Mutation: {
-        addVote(_:void, { character}, {db, pubsub}) {
+        async addVote(_:void, { character}, {db, pubsub}) {
             const vote = {
-                id: String(votes.length + 1),
+                id: String(await db.collection('votes').count() + 1),
                 character,
                 createdAt: (new Datetime().getCurrentDateTime())
             };
