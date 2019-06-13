@@ -20,8 +20,7 @@ async function start() {
     app.use(compression());
 
     // Configuración de la base de datos NoSQL
-    // const MONGO_DB = 'mongodb://localhost:27017/breaking-bad-voting-characters';
-    const MONGO_DB = String(process.env.DATABASE);
+    const MONGO_DB = String(process.env.DATABASE) || 'mongodb://localhost:27017/breaking-bad-voting-characters';
     const LOG_COLOR = "\x1b[36m%s\x1b[0m";
     const client = await MongoClient.connect( MONGO_DB, { useNewUrlParser: true } );
     const db = client.db();
