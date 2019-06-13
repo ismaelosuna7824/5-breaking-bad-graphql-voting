@@ -4,18 +4,28 @@ import { votes, NEW_VOTE } from './resolversMap';
 import {database} from './../data/data.store';
 const mutation : IResolvers = {
     Mutation: {
-        addVote(_:void, { character}, {pubsub}) {
+        addVote(_:void, { character}, {db, pubsub}) {
             const vote = {
                 id: String(votes.length + 1),
                 character,
                 createdAt: (new Datetime().getCurrentDateTime())
             };
-            votes.push(vote);
+
+            db.collection('votes')
+                .insertOne(vote)
+                .then((result: any) => {
+                    vote.id = result.insertedId;
+                })
+                .catch((err: any) => {
+                    // handle error
+                    console.log(err);
+            });
+            // votes.push(vote);
             /**
              * Send all characters data
              */
-            pubsub.publish(NEW_VOTE, { newVote: database.characters });
-            return votes;
+            pubsub.publish(NEW_VOTE, { newVote: db.collection('characters').find().toArray() });
+            return db.collection('votes').find().toArray();
         }
     }
 }
