@@ -2,9 +2,11 @@ type Character {
     id: ID!
     name: String!
     actor: String!
+    description: String!
     total_episodes: Int!
     photo: String
     votes: Int!
+    url: String!
 }
 
 type Vote {
@@ -22,7 +24,7 @@ type Mutation {
     """ 
     Send vote to select character
     """
-    addVote(character: ID!): [Vote!]!
+    addVote(character: ID!): Vote!
 }
 
 """

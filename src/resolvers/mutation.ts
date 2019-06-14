@@ -10,10 +10,10 @@ const mutation : IResolvers = {
                 createdAt: (new Datetime().getCurrentDateTime())
             };
 
-            db.collection(COLLECTIONS.VOTES)
+            await db.collection(COLLECTIONS.VOTES)
                 .insertOne(vote)
                 .then((result: any) => {
-                    vote.id = result.insertedId;
+                    
                 })
                 .catch((err: any) => {
                     // handle error
@@ -23,8 +23,8 @@ const mutation : IResolvers = {
             /**
              * Send all characters data and notify!
              */
-            pubsub.publish(NEW_VOTE, { newVote: db.collection(COLLECTIONS.CHARACTERS).find().toArray() });
-            return db.collection(COLLECTIONS.VOTES).find().toArray();
+            pubsub.publish(NEW_VOTE, { newVote: await db.collection(COLLECTIONS.CHARACTERS).find().toArray() });
+            return vote;
         }
     }
 }
