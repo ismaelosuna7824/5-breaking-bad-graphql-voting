@@ -1,5 +1,5 @@
-import { NEW_VOTE } from './resolversMap';
 import { IResolvers } from 'graphql-tools';
+import { NEW_VOTE } from '../config/constants';
 
 const subscription : IResolvers = {
     Subscription: {

@@ -1,15 +1,16 @@
 import { IResolvers } from 'graphql-tools';
+import { COLLECTIONS, PHOTO_URL_PRINCIPAL } from '../config/constants';
 /**
  * Take select character votes count
  * @param id Select Character ID value
  */
 async function getCharacterVotes(db: any, id: number | string) {
     // TODO return select character votes total
-    return db.collection('votes').find({ character: id }).count();
+    return db.collection(COLLECTIONS.VOTES).find({ character: id }).count();
 }
 
 function getPhoto(photo: string) {
-    return (photo !== undefined) ? 'https://vignette.wikia.nocookie.net/breakingbad/images'.concat(photo) : undefined;
+    return (photo !== undefined) ? PHOTO_URL_PRINCIPAL.concat(photo) : undefined;
 }
 
 const type: IResolvers = {

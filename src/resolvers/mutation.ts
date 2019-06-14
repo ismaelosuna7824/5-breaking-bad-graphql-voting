@@ -1,16 +1,16 @@
 import { Datetime } from './../libs/datetime';
 import { IResolvers } from 'graphql-tools';
-import { NEW_VOTE } from './resolversMap';
+import { COLLECTIONS, NEW_VOTE } from '../config/constants';
 const mutation : IResolvers = {
     Mutation: {
         async addVote(_:void, { character}, {db, pubsub}) {
             const vote = {
-                id: String(await db.collection('votes').countDocuments() + 1),
+                id: String(await db.collection(COLLECTIONS.VOTES).countDocuments() + 1),
                 character,
                 createdAt: (new Datetime().getCurrentDateTime())
             };
 
-            db.collection('votes')
+            db.collection(COLLECTIONS.VOTES)
                 .insertOne(vote)
                 .then((result: any) => {
                     vote.id = result.insertedId;
@@ -23,8 +23,8 @@ const mutation : IResolvers = {
             /**
              * Send all characters data and notify!
              */
-            pubsub.publish(NEW_VOTE, { newVote: db.collection('characters').find().toArray() });
-            return db.collection('votes').find().toArray();
+            pubsub.publish(NEW_VOTE, { newVote: db.collection(COLLECTIONS.CHARACTERS).find().toArray() });
+            return db.collection(COLLECTIONS.VOTES).find().toArray();
         }
     }
 }
