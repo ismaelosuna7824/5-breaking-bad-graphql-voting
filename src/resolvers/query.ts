@@ -8,7 +8,6 @@ const query : IResolvers = {
         },
         async character(_: void, { id }, { db }): Promise<any> {
             const c = await db.collection(COLLECTIONS.CHARACTERS).findOne({id: id});
-            console.log(c);
             return (c !== undefined && c !== null )? c: {
                 id, 
                 name: `Not found ${id} contain character`, 
