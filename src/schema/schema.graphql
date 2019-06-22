@@ -1,38 +1,54 @@
+"""
+Información del personaje de la serie
+"""
 type Character {
+    """ ID único que corresponde a un personaje """
     id: ID!
+    """ Nombre del personaje """
     name: String!
+    """ Nombre y Apellidos del actor que actua como el personaje"""
     actor: String!
+    "Descripción sobre el personaje"
     description: String!
+    "Episodios totales en los que ha paticipado"
     total_episodes: Int!
+    "URL de la fotodo del personaje"
     photo: String
+    "Número de votos recibido"
     votes: Int!
+    "URL para obtener + Información sobre ese personaje"
     url: String!
 }
 
 type Vote {
+    "Número de indetificación del voto emitido"
     id: ID!
+    "Identificador del personaje que se ha votado"
     character: ID!
+    "Fecha / Hora de cuando se ha recibido el voto"
     createdAt: String!
 }
 
 type Query {
+    "Lista de personajes"
     characters: [Character!]!
+    "Información del personaje seleccionado mediante el identificador único"
     character(id: ID!): Character!
 }
 
 type Mutation {
     """ 
-    Send vote to select character
+    Añadimos el voto al personaje que hemos seleccionado
     """
     addVote(character: ID!): Vote!
 }
 
 """
-Subscriptions to take realtime votes data
+Suscripciones para obtener información en tiempo real ante cualquier voto recibido
 """
 type Subscription {
     """
-    Take new votes
+    Acción de obtener nuevos votos
     """
     newVote: [Character!]!
 }
