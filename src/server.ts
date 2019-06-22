@@ -39,11 +39,11 @@ async function start() {
     });
     server.applyMiddleware({ app });
 
-    app.get('/', (_, res) => {
+    app.get('/welcome', (_, res) => {
         res.send('Welcome to Breaking Bad vote system in GraphQL');
     });
 
-    app.get('/playground', expressPlayground({
+    app.get('/', expressPlayground({
         endpoint: '/graphql'
     }));
     const PORT = process.env.PORT || 5005;
