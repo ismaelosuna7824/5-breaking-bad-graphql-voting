@@ -1,5 +1,6 @@
 import expressPlayground from 'graphql-playground-middleware-express';
-import { PubSub, ApolloServer} from 'apollo-server-express';
+import { ApolloServer} from 'apollo-server-express';
+import { PubSub } from 'graphql-subscriptions';
 import compression from 'compression';
 import cors from 'cors';
 import { createServer } from 'http';
