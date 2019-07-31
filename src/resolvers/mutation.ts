@@ -21,12 +21,13 @@ const mutation: IResolvers = {
                return response(false, 'El personaje no existe y no se puede votar', db);
             }
             
-            // Obtenemos el id del voto
+            // Obtenemos el id del voto y creamos el objeto del voto
             const vote = {
                 id: await asignVoteId(db),
                 character,
                 createdAt: new Datetime().getCurrentDateTime()
             };
+            // Añadimos el voto
             return await db.collection(COLLECTIONS.VOTES).insertOne(vote).then(
                 async() => {
                     sendNotification(pubsub, db);
@@ -39,18 +40,17 @@ const mutation: IResolvers = {
             );    
         },
         async updateVote(_: void, {id, character }, { pubsub, db }) {
-            // Comrpobar que el personaje existe
+            // Comprobar que el personaje existe
             const selectCharacter = await getCharacter(db, character);
             if (selectCharacter === null || selectCharacter === undefined) {
                 return response(false, 'El personaje introducido no existe y no puedes actualizar el voto', db);
             }
-            // comprobar que el voto existe
+            // Comprobar que el voto existe
             const selectVote = await getVote(db, id);
             if (selectVote === null || selectVote === undefined) {
                 return response(false, 'El voto introducido no existe y no puedes actualizar', db);
             }
             // Actualizar el voto despues de comprobar
-
             return await db.collection(COLLECTIONS.VOTES).updateOne(
                 { id },
                 { $set: { character } }
