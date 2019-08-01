@@ -9,12 +9,9 @@ async function response(status: boolean, message: string, db: any) {
         characters: await getCharacters(db)
     }
 }
-async function sendNotification(pubsub: any, db: any) {
-    pubsub.publish(CHANGE_VOTES, { changeVotes: await getCharacters(db)})
-}
 const mutation: IResolvers = {
     Mutation: {
-        async addVote(_: void, { character }, { pubsub, db}) {
+        async addVote(_: void, { character }, { db}) {
             // Comprobar que el personaje existe
             const selectCharacter = await getCharacter(db, character);
             if (selectCharacter === null || selectCharacter === undefined) {
@@ -30,7 +27,6 @@ const mutation: IResolvers = {
             // Añadimos el voto
             return await db.collection(COLLECTIONS.VOTES).insertOne(vote).then(
                 async() => {
-                    sendNotification(pubsub, db);
                     return response(true, 'El personaje existe y se ha emitido correctamente el voto', db)
                 }
             ).catch(
@@ -39,7 +35,7 @@ const mutation: IResolvers = {
                 }
             );    
         },
-        async updateVote(_: void, {id, character }, { pubsub, db }) {
+        async updateVote(_: void, {id, character }, { db }) {
             // Comprobar que el personaje existe
             const selectCharacter = await getCharacter(db, character);
             if (selectCharacter === null || selectCharacter === undefined) {
@@ -56,7 +52,6 @@ const mutation: IResolvers = {
                 { $set: { character } }
             ).then(
                 async() => {
-                    sendNotification(pubsub, db);
                     return response(true, 'Voto actualizado correctamente', db);
                 }
             ).catch(
@@ -65,7 +60,7 @@ const mutation: IResolvers = {
                 }
             )
         },
-        async deleteVote(_: void, { id }, { pubsub, db }){
+        async deleteVote(_: void, { id }, { db }){
             // COmprobar que el voto existe
             // comprobar que el voto existe
             const selectVote = await getVote(db, id);
@@ -75,7 +70,6 @@ const mutation: IResolvers = {
             // Si existe, borrarlo
             return await db.collection(COLLECTIONS.VOTES).deleteOne({ id }).then(
                 async() => {
-                    sendNotification(pubsub, db);
                     return response(true, 'Voto borrado correctamente', db);
                 }
             ).catch(
