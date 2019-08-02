@@ -46,8 +46,8 @@ async function init() {
         { port: PORT },
         () => {
             console.log('====================================SERVER==============================');
-            console.log(`Votaciones Breaking Bad API GraphQL http://localhost:${PORT}/${server.graphqlPath}`);
-            console.log(`Subscription Votaciones Breaking Bad API GraphQL ws://localhost:${PORT}/${server.subscriptionsPath}`)
+            console.log(`Votaciones Breaking Bad API GraphQL http://localhost:${PORT}${server.graphqlPath}`);
+            console.log(`Subscription Votaciones Breaking Bad API GraphQL ws://localhost:${PORT}${server.subscriptionsPath}`)
         }
     );
 }

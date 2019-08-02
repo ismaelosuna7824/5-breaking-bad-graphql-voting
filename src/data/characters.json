@@ -1,0 +1,65 @@
+[
+    {
+        "id": "1",
+        "name": "Walter White",
+        "actor": "Bryan Cranston",
+        "total_episodes": 62,
+        "photo": "/e/e7/BB-S5B-Walt-590.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Jesse Pinkman",
+        "actor": "Aaron Paul",
+        "total_episodes": 62,
+        "photo": "/0/0c/JesseS5B.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Skyler White",
+        "actor": "Anna Gunn",
+        "total_episodes": 61,
+        "photo": "/d/d3/Skylar_S5b.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Hank Schrader",
+        "actor": "Dean Norris",
+        "total_episodes": 51,
+        "photo": "/7/7b/Hank_S5b.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Marie Schrader",
+        "actor": "Betsy Brandt",
+        "total_episodes": 50,
+        "photo": "/b/b7/Marie_S5b.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Walter White Jr.",
+        "actor": "RJ Mitte",
+        "total_episodes": 53,
+        "photo": "/4/41/WaltJr_S5b.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Gustavo Fring",
+        "actor": "Giancarlo Esposito",
+        "total_episodes": 24,
+        "photo": "/b/be/Season_4_-_Gus.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Saul Goodman",
+        "actor": "Bob Odenkirk",
+        "total_episodes": 36,
+        "photo": "/a/a4/Saul_S5b.jpg"
+    },
+    {
+        "id": "9",
+        "name": "Mike Ehrmantraut",
+        "actor": "Jonathan Banks",
+        "total_episodes": 25,
+        "photo": "/8/8b/MikeS5.jpg"
+    }
+]
