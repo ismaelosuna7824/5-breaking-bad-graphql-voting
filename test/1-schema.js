@@ -83,40 +83,104 @@ describe('Test Schema GraphQL', () => {
             tester.test(false, query, {id: "1"});
 		});
 	});
-	/*describe('Type Root: Mutation', () => {
+	describe('Type Root: Mutation', () => {
 
-		it("Llamada 'add' válida", () => {
+		it("Llamada 'addVote' válida", () => {
 			const query = `
-                mutation addElement($value: String!) {
-					add(value: $value)
+                mutation votar($character: ID!) {
+					addVote(character: $character) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
 				}
             `;
-			tester.test(true, query, {value: "Anartz"});
-		});
-		it("Llamada 'add' inválida", () => {
+			tester.test(true, query, {character: "1"});
+        });
+        it("Llamada 'addVote' inválida", () => {
 			const query = `
-				query addElement($value: String!) {
-					add(value: $value)
+                query votar($id: ID!) {
+					addVote(id: $id) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
 				}
             `;
-			tester.test(false, query, {value: "ddd"});
-		});
-		it("Llamada 'removeLast' válida", () => {
+			tester.test(false, query, {character: "1"});
+        });
+        it("Llamada 'updateVote' válida", () => {
 			const query = `
-                mutation {
-					removeLast 
+                mutation votar($id: ID!, $character: ID!) {
+					updateVote(id: $id, character: $character) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
 				}
             `;
-			tester.test(true, query, {});
-		});
-		it("Llamada 'removeLast' inválida", () => {
+			tester.test(true, query, {id: "1", character: "2"});
+        });
+        it("Llamada 'updateVote' inválida", () => {
 			const query = `
-				query {
-					removeLast
+                query actualizar($id: ID!) {
+					addVote(id: $id) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
 				}
             `;
-			tester.test(false, query, {});
+			tester.test(false, query, {character: "1"});
+        });
+        it("Llamada 'removeVote' válida", () => {
+			const query = `
+                mutation quitar($id: ID!) {
+					deleteVote(id: $id) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
+				}
+            `;
+			tester.test(true, query, {id: "1"});
+        });
+        it("Llamada 'deleteVote' inválida", () => {
+			const query = `
+                query votar($id: ID!) {
+					deleteVote(id: $id) {
+                        status
+                        message
+                        characters {
+                            id
+                            name
+                            votes
+                        }
+                    }
+				}
+            `;
+			tester.test(false, query, {id: "1"});
 		});
 		
-	});*/
+	});
 });
