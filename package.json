@@ -7,7 +7,8 @@
     "start": "node build/server.js",
     "build": "tsc -p . && ncp src/schema build/schema",
     "start:dev": "npm run build:dev",
-    "build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src-server.ts -e ts,graphql,json"
+    "build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src-server.ts -e ts,graphql,json",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,9 @@
     "@types/graphql": "^14.2.2",
     "@types/mongodb": "^3.1.28",
     "@types/node": "^12.0.10",
+    "chai": "^4.2.0",
+    "easygraphql-tester": "^5.1.6",
+    "mocha": "^6.2.2",
     "nodemon": "^1.19.4",
     "ts-node": "^8.5.0"
   }
