@@ -10,7 +10,7 @@ const characters = () => {
     return CHARACTERS;
 }
 const character = (__, { id }) => {
-    return _.findIndex(CHARACTERS, function(o) { return o.id == id; });
+    return _.find(CHARACTERS, function(o) { return o.id == id; });
 }
 
 const resolverQueries = {
