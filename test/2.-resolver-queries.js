@@ -1,5 +1,5 @@
 'use strict';
-const QUERIES = require('./mocks/data').QUERIES;
+const QUERIES = require('./mocks/operations/query');
 const EasyGraphQLTester = require('easygraphql-tester');
 const path = require('path');
 const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
