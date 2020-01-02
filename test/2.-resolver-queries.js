@@ -6,7 +6,15 @@ const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
 const apiSchema = mergeTypes(fileLoader(path.join(__dirname, './../src/schema/**/*.graphql')), { all: true });
 const resolvers = require('./mocks/resolvers/query').resolverQueries;
 const expect = require('chai').expect;
-// const tester =
+
+// Comprobar que los datos de la query coinciden y son en el formato que deseamos
+const characterCheckData = async (tester, query, id, expectName) => {
+    const result = await tester.graphql(query, undefined, undefined, { id });
+    const resultTest = result.data.character;
+    expect(resultTest.name).to.be.equal(expectName);
+    expect(typeof(resultTest.description)).to.be.equal('string');
+    expect(typeof(resultTest.votes)).to.be.equal('number');
+};
 describe('Test Schema GraphQL', () => {
 	let tester;
 	before(function() {
@@ -29,36 +37,16 @@ describe('Test Schema GraphQL', () => {
             
         });
         it('Obtener información del personaje Walter White y comprobar', async () => {
-			const query = QUERIES.GETCHARACTER;
-            const walter = await tester.graphql(query, undefined, undefined, {id: '1'});
-            const walterTest = walter.data.character;
-            expect(walterTest.name).to.be.equal('Walter White');
-            expect(typeof(walterTest.description)).to.be.equal('string');
-            expect(typeof(walterTest.votes)).to.be.equal('number');
+            await characterCheckData(tester, QUERIES.GETCHARACTER, '1', 'Walter White');
         });
         it('Obtener información del personaje Jesse Pinkman y comprobar', async () => {
-			const query = QUERIES.GETCHARACTER;
-            const jesse = await tester.graphql(query, undefined, undefined, {id: '2'});
-            const jesseTest = jesse.data.character;
-            expect(jesseTest.name).to.be.equal('Jesse Pinkman');
-            expect(typeof(jesseTest.description)).to.be.equal('string');
-            expect(typeof(jesseTest.votes)).to.be.equal('number');
+			await characterCheckData(tester, QUERIES.GETCHARACTER, '2', 'Jesse Pinkman');
         });
         it('Obtener información del personaje Skyler y comprobar', async () => {
-            const query = QUERIES.GETCHARACTER;
-            const skyler = await tester.graphql(query, undefined, undefined, {id: '3'});
-            const skylerTest = skyler.data.character;
-            expect(skylerTest.name).to.be.equal('Skyler White');
-            expect(typeof(skylerTest.description)).to.be.equal('string');
-            expect(typeof(skylerTest.votes)).to.be.equal('number');
+            await characterCheckData(tester, QUERIES.GETCHARACTER, '3', 'Skyler White');
         });
         it('Obtener información del personaje Hank y comprobar', async () => {
-			const query = QUERIES.GETCHARACTER;
-            const hank = await tester.graphql(query, undefined, undefined, {id: '4'});
-            const hankTest = hank.data.character;
-            expect(hankTest.name).to.be.equal('Hank Schrader');
-            expect(typeof(hankTest.description)).to.be.equal('string');
-            expect(typeof(hankTest.votes)).to.be.equal('number');
+            await characterCheckData(tester, QUERIES.GETCHARACTER, '4', 'Hank Schrader');
 		});
 	});
 });
