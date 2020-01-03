@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const CHARACTERS = [
 	{
 		id: '1',
@@ -54,6 +56,9 @@ const VOTES = [
 	{ id: '6', character: '1', createdAt: '2019-07-28 08:10:00' }
 ];
 
+const FIND_CHARACTER = (id) => _.find(CHARACTERS, function(o) { return o.id == id; })
+
+const CHARACTER_VOTES = (id) => (_.filter(VOTES, function(o) { return o.character === id; })).length;
 
 
-module.exports = { CHARACTERS, VOTES };
+module.exports = { CHARACTERS, VOTES, CHARACTER_VOTES, FIND_CHARACTER };

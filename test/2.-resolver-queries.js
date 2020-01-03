@@ -17,7 +17,7 @@ const characterCheckData = async (tester, query, id, expectName) => {
 };
 describe('Test Schema GraphQL', () => {
 	let tester;
-	before(function() {
+	before(async () => {
 		tester = new EasyGraphQLTester(apiSchema, resolvers);
 	});
 	describe('Testing Resolvers - Type Root - Query', () => {

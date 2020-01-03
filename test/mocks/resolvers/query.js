@@ -1,10 +1,9 @@
 const _ = require('lodash');
 const DATA = require('./../data');
 const CHARACTERS = DATA.CHARACTERS;
-const VOTES = DATA.VOTES;
 const characters = () => {
     CHARACTERS.map((c, index) => {
-        c.votes = (_.filter(VOTES, function(o) { return o.character === c.id; })).length;
+        c.votes = DATA.CHARACTER_VOTES(c.id);
         CHARACTERS[index] = c;
     });
     return CHARACTERS;
