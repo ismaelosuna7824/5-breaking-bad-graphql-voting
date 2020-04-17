@@ -3,7 +3,7 @@ import { CHANGE_VOTES } from "../config/constants";
 
 const subscription: IResolvers = {
     Subscription: {
-        changeVotes: {
+        newVote: {
             subscribe: (_: void, __: any, { pubsub }) => {
                 return pubsub.asyncIterator(CHANGE_VOTES);
             }
