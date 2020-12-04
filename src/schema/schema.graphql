@@ -30,6 +30,8 @@ type Mutation {
 type Subscription {
     "Definición para recibir los avisos de los cambios en los votos sea cual sea la acción"
     changeVotes: [Character!]!
+    "Obtener el valor del voto del personaje seleccionado"
+    changeVote(id: ID!): Character!
 }
 
 """Resultado de la operación que usamos en las definiciones de los mutation. 
